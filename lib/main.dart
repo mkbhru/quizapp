@@ -2,10 +2,23 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(Myapp());
 
-class Myapp extends StatelessWidget {
+class Myapp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    // throw UnimplementedError();
+    return MyappState();
+  }
+}
+
+class MyappState extends State<Myapp> {
+  //we add generic Myapp to
+//setup connections with Myapp class
   var questionindex = 0;
   void answerQuestion() {
-    questionindex = questionindex + 1;
+    setState(() {
+      questionindex = questionindex + 1;
+    });
     print(questionindex);
   }
 
