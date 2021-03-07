@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './questions.dart';
+import './answer.dart';
 
 void main() => runApp(Myapp());
 
@@ -28,13 +29,22 @@ class _MyappState extends State<Myapp> {
 
   @override
   Widget build(BuildContext context) {
-    var questions = [
-      'what is your favourite color!',
-      'what is your favourite animal!',
-      'what is your favourite number!',
-      'what is your favourite name!',
+    
+       var questions = [
+      {'questionText':'What is your favourite color',
+      'answers':['Black','red','Green','White']
+      },
+      {
+        'questionText':'what is your favourite animal!',
+        'answers':['tiger','Lion','Peacock','King Cobra']
+      },
+      {
+        'questionText':'what is your favourite number!',
+        'answers':['One','Three','Nine','Six']
+      }
+      
     ];
-    return MaterialApp(
+          return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: Text('yo My App'),
@@ -42,22 +52,13 @@ class _MyappState extends State<Myapp> {
         body: Column(
           children: [
             Question(
-              questions[_questionindex],
+              questions[_questionindex] ['questionText'],
             ),
-            RaisedButton(
-              child: Text('Answer 1'),
-              onPressed: _answerQuestion,
-            ),
-            RaisedButton(
-              child: Text('Answer 2'),
-              onPressed: () => print('answer 2 is chosen'),
-            ),
-            RaisedButton(
-              child: Text('Answer 3'),
-              onPressed: () {
-                print('answer 3 is chosen');
-              },
-            ),
+            ...(questions[_questionindex] ['answers'] as List<String> ).map((answer  ){
+            return Answer(_answerQuestion,answer);
+            }).toList()
+            //this three sot operator adds all values of a existing list into a 
+            // this list
           ],
         ),
       ),
@@ -67,3 +68,13 @@ class _MyappState extends State<Myapp> {
 
 //generally we have one widget per file therefore i
 //create question.dart
+// RaisedButton(
+//   child: Text('Answer 2'),
+//   onPressed: () => print('answer 2 is chosen'),
+// ),
+// RaisedButton(
+//   child: Text('Answer 3'),
+//   onPressed: () {
+//     print('answer 3 is chosen');
+//   },
+// ),
