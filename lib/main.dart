@@ -14,12 +14,15 @@ class Myapp extends StatefulWidget {
 }
 
 class _MyappState extends State<Myapp> {
-  //we add generic Myapp to
+  //we add generic Myapp toi
 //setup connections with Myapp class
   var _questionindex = 0;
   void _answerQuestion() {
     setState(() {
       _questionindex = _questionindex + 1;
+      if (_questionindex == 3) {
+        _questionindex = 0;
+      }
     }); //because of this set state function we can rerender
     //in every answer
     print(_questionindex);
@@ -29,22 +32,21 @@ class _MyappState extends State<Myapp> {
 
   @override
   Widget build(BuildContext context) {
-    
-       var questions = [
-      {'questionText':'What is your favourite color',
-      'answers':['Black','red','Green','White']
+    var questions = [
+      {
+        'questionText': 'What is your favourite color!!!!!',
+        'answers': ['Black', 'red', 'Green', 'White', ]
       },
       {
-        'questionText':'what is your favourite animal!',
-        'answers':['tiger','Lion','Peacock','King Cobra']
+        'questionText': 'what is your favourite animal!!',
+        'answers': ['tiger', 'Lion', 'Peacock', 'King Cobra']
       },
       {
-        'questionText':'what is your favourite number!',
-        'answers':['One','Three','Nine','Six']
+        'questionText': 'what is your favourite number!',
+        'answers': ['One', 'Three', 'Nine', 'Six']
       }
-      
     ];
-          return MaterialApp(
+    return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: Text('yo My App'),
@@ -52,18 +54,25 @@ class _MyappState extends State<Myapp> {
         body: Column(
           children: [
             Question(
-              questions[_questionindex] ['questionText'],
+              questions[_questionindex]['questionText'],
             ),
-            ...(questions[_questionindex] ['answers'] as List<String> ).map((answer  ){
-            return Answer(_answerQuestion,answer);
+            ...(questions[_questionindex]['answers'] as List<String>)
+                .map((answer) {
+              return Answer(_answerQuestion, answer);
             }).toList()
-            //this three sot operator adds all values of a existing list into a 
+            //this three sot operator adds all values of a existing list into a
             // this list
+            /*here list is me .map() question[0][1] list ki values ko ek ek karke anonymous function m
+ pass kar raha h answer argument m .jo ki in turn widget bana k de raha h.
+.tolist() un widget ki list bana rahi h. or fir spread operator usko spread kar 
+raha h body m ek sath jo hamari list ban chuki thi .traversing ka kaam .map kar raha h
+Sahi h na ma'am😅 */
           ],
         ),
       ),
     );
   }
+
 }
 
 //generally we have one widget per file therefore i
