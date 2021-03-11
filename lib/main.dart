@@ -16,26 +16,15 @@ class Myapp extends StatefulWidget {
 class _MyappState extends State<Myapp> {
   //we add generic Myapp toi
 //setup connections with Myapp class
-  var _questionindex = 0;
-  void _answerQuestion() {
-    setState(() {
-      _questionindex = _questionindex + 1;
-      if (_questionindex == 3) {
-        _questionindex = 0;
-      }
-    }); //because of this set state function we can rerender
-    //in every answer
-    print(_questionindex);
-  } //flutter didn't reubilds entire ui again it
-  //is so eficient thet it ony rebuilds therequired thing
-  // or changed thing
-
-  @override
-  Widget build(BuildContext context) {
-    var questions = [
+ final questions = const[
       {
         'questionText': 'What is your favourite color!!!!!',
-        'answers': ['Black', 'red', 'Green', 'White', ]
+        'answers': [
+          'Black',
+          'red',
+          'Green',
+          'White',
+        ]
       },
       {
         'questionText': 'what is your favourite animal!!',
@@ -46,6 +35,26 @@ class _MyappState extends State<Myapp> {
         'answers': ['One', 'Three', 'Nine', 'Six']
       }
     ];
+  var _questionindex = 0;
+  void _answerQuestion() {
+    if (_questionindex< questions.length) {
+      
+    }
+    setState(() {
+      _questionindex = _questionindex + 1;
+      if (_questionindex == 3) {
+        main();
+      }
+    }); //because of this set state function we can rerender
+    //in every answer
+    print(_questionindex);
+  } //flutter didn't reubilds entire ui again it
+  //is so eficient thet it ony rebuilds therequired thing
+  // or changed thing
+
+  @override
+  Widget build(BuildContext context) {
+   //we moved questions from here cause there scope is limited to only this method
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -72,7 +81,6 @@ Sahi h na ma'am😅 */
       ),
     );
   }
-
 }
 
 //generally we have one widget per file therefore i
