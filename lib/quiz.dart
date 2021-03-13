@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import './questions.dart';
 import './answer.dart';
 
+
 class Quiz extends StatelessWidget {
   final List<Map<String, Object>> questions;
   final Function answerQuestion;
@@ -14,9 +15,11 @@ class Quiz extends StatelessWidget {
         Question(
           questions[questionIndex]['questionText'],
         ),
-        ...(questions[questionIndex]['answers'] as List<String>).map((answer) {
-          return Answer(answerQuestion, answer);
+        ...(questions[questionIndex]['answers'] as List<Map<String,Object>>).map((answer) {
+          return Answer(()=>answerQuestion(answer['score']), answer['text']);
         }).toList()
+        
+        //*n*/
         //this three sot operator adds all values of a existing list into a
         // this list
         /*here list is me .map() question[0][1] list ki values ko ek ek karke anonymous function m
