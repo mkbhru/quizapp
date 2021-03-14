@@ -1,5 +1,5 @@
 # appp
-![image](https://user-images.githubusercontent.com/74449664/110241357-5abaeb80-7f76-11eb-85e6-339b45ae812d.png)
+
 App screenshot ,7 march2021
 
 A new Flutter project.
